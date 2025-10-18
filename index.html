@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZerandoVianei</title>
+    <title>ZerandoVander</title>
     
     <style>
         /* --- ESTILOS GERAIS E LAYOUT --- */
@@ -155,7 +155,7 @@
             text-shadow: 0 0 3px black; 
         }
         
-        /* NOVO ESTILO: Personalização para o texto "Vianei" */
+        /* NOVO ESTILO: Personalização para o texto "Vander" */
         #player-name-top {
             color: yellow; /* Cor Amarela */
             font-size: 0.7em; /* Letras Pequenas (mantido) */
@@ -358,7 +358,7 @@
     </style>
 </head>
 <body>
-    <div class="game-title">ZerandoVianei</div> 
+    <div class="game-title">ZerandoVander</div> 
     
     <div id="audio-manager" style="display: none;">
         <audio id="musica-ambiente" src="audio/musica-ambiente.mp3" loop></audio>
@@ -400,7 +400,7 @@
         
         <div id="player">
             <span id="player-value">83</span>
-            <span id="player-name-top">Vianei</span> 
+            <span id="player-name-top">Vander</span> 
         </div>
         
         <div id="paused-overlay">PAUSADO</div> 
@@ -467,10 +467,10 @@
             { type: 'monster', sign: "🧛", points: 3, isFatal: false, isMonster: true }, 
             { type: 'monster', sign: "👽", points: 2, isFatal: false, isMonster: true }, 
             { type: 'monster', sign: "👻", points: 1, isFatal: false, isMonster: true },
-            // NOVO MONSTRO: SEREIA MALVADA (CAROLINA) - Nível Mínimo 2
-            { type: 'monster', sign: "🧜‍♀️", name: "Carolina", points: 3, fixedDamage: 3, isFatal: false, isMonster: true, minLevel: 2 },
-            // NOVO MONSTRO: POLVO (EMILIO) - Adicionado a partir do Nível 3, com Dano na Pontuação
-            { type: 'monster', sign: "🐙", name: "Emilio", points: 4, scoreDamage: 4, isFatal: false, isMonster: true, minLevel: 3 } 
+            // NOVO MONSTRO: SEREIA MALVADA (Veronica) - Nível Mínimo 2
+            { type: 'monster', sign: "🧜‍♀️", name: "Veronica", points: 3, fixedDamage: 3, isFatal: false, isMonster: true, minLevel: 2 },
+            // NOVO MONSTRO: POLVO (Valdir) - Adicionado a partir do Nível 3, com Dano na Pontuação
+            { type: 'monster', sign: "🐙", name: "Valdir", points: 4, scoreDamage: 4, isFatal: false, isMonster: true, minLevel: 3 } 
         ];
         
         // --- FUNÇÕES DE GERENCIAMENTO DE ÁUDIO (CORREÇÃO DE AUTOPLAY) ---
@@ -595,7 +595,7 @@
             playerScore = state.score;
             playerValue = state.value;
 
-            // playerNameTopElement.textContent = state.name; // COMENTADO: Mantém o texto "Vianei"
+            // playerNameTopElement.textContent = state.name; // COMENTADO: Mantém o texto "Vander"
             // CORRIGIDO: Restaurando a atualização do nível
             // playerNameBottomElement.textContent = `NÍVEL: ${level}`; // REMOVIDO: Elemento de nível removido do HTML
             
@@ -1159,14 +1159,14 @@
             let monsterValue = 0;
 
             if (operatorData.isMonster) {
-                // MODIFICADO: Usa dano fixo se definido (Ex: Carolina)
+                // MODIFICADO: Usa dano fixo se definido (Ex: Veronica)
                 if (operatorData.fixedDamage !== undefined) {
                     monsterValue = operatorData.fixedDamage;
                 } else {
                     monsterValue = generateMonsterValue();
                 }
                 objectDiv.dataset.monsterValue = monsterValue; 
-                // NOVO: Adiciona o dano na pontuação se definido (Ex: Emilio)
+                // NOVO: Adiciona o dano na pontuação se definido (Ex: Valdir)
                 if (operatorData.scoreDamage !== undefined) {
                     objectDiv.dataset.scoreDamage = operatorData.scoreDamage;
                 }
@@ -1416,7 +1416,7 @@
                     let customMessage = null;
                     
                     if (scoreDamage > 0) {
-                        // Monstro que afeta a pontuação (Ex: Emilio)
+                        // Monstro que afeta a pontuação (Ex: Valdir)
                         updateScore(-scoreDamage);
                         damageValue = 0; // Não afeta playerValue
                         
@@ -1756,7 +1756,7 @@
 
         // --- INICIALIZAÇÃO E CONTROLES DE INTERFACE (CORREÇÃO DE ÁUDIO INCLUÍDA) ---
         window.onload = () => {
-             initializeWavyTitle(gameTitleElement, "ZerandoVianei"); 
+             initializeWavyTitle(gameTitleElement, "ZerandoVander"); 
 
              document.getElementById('pause-button').onclick = togglePause;
              document.getElementById('reset-button').onclick = fullGameReset; 
@@ -1765,9 +1765,8 @@
                  playFx('som-clique-sair-jogo');
                  alert(
                      "*** DEDICATÓRIA ***\n" +
-                     "Esse jogo é em homenagem ao querido **Vianei**, que antes tem Jose e depois termina em Gomes, " +
-                     "mas também virou **Vianovski, Vianelo, Viandembrovski**, haja língua, e virou joguinho inteligente " +
-                     "então temos o bacana **ZerandoVianei**. Abraços. vgm.\n\n" + 
+                     "Esse jogo é em homenagem ao querido **Vander**, Jose Vanderlei Gomes " +
+                     " **ZerandoVander**. Abraços. vgm.\n\n" + 
     
                      "*** TUTORIAL ***\n" + 
                      "OBJETIVO: Levar o Valor do Jogador (Player Value) para o mais próximo de ZERO (abaixo de 0.001) para subir de Nível.\n" +
@@ -1777,7 +1776,7 @@
                      "**ATENÇÃO:** A Divisão (/) é BLOQUEADA se o valor do jogador estiver entre -0.25 e 0.25.\n" +
                      "**MONSTROS** subtraem um valor aleatório de -6 a 6 do seu valor e subtraem pontos ao colidir. " +
                      "A Sereia Malvada (🧜‍♀️) aparece a partir do Nível 2 e subtrai um valor fixo de 3. " +
-                     "**O POLVO EMILIO (🐙) aparece a partir do Nível 3 e desconta 4 pontos da sua pontuação ao colidir.**\n" +
+                     "**O POLVO Valdir (🐙) aparece a partir do Nível 3 e desconta 4 pontos da sua pontuação ao colidir.**\n" +
                      "Atirar em MONSTROS *não-fatais* com valor decimal e mais de 50 pontos **compra correção decimal por 50pts** (Conserta o Decimal para o inteiro mais próximo). " +
                      "Caso contrário, você **GANHA** os pontos do monstro (todos dão pontos). " +
                      "Alguns monstros não-fatais podem vir das laterais com movimento curvo. " +
